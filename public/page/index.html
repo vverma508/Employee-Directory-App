@@ -1,0 +1,100 @@
+<html !DOCTYPE>
+
+<head>
+    <title>
+        Employee Directory
+    </title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="../scripts/EmpCtrl.js"></script>
+    <script src="../scripts/EmpApp.js"></script>
+</head>
+
+<body ng-app="empapp" ng-controller="empcontroller">
+    <div>
+
+        <div>
+            <h1>Final Assignment - Employee Directory App</h1>
+        </div>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Date Of Birth
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Name" ng-model="employee.name" />
+                    </td>
+                    <td>
+                        <input type="email" placeholder="Email" ng-model="employee.email" />
+                    </td>
+                    <td>
+                        <input type="date" placeholder="date of birth" ng-model="employee.dob" ng-change="getAge(employee)" />
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Department" ng-model="employee.department" />
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Gender" ng-model="employee.gender" />
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Age" ng-model="employee.age" ng-disabled="true" />
+                    </td>
+                    <td>
+                        <input type="button" value="Add Employee" ng-click="CreateEmploye(employee)">
+                    </td>
+                    <td>
+                        <input type="button" value="Update Employee" ng-click="UpdateEmploye(employee)">
+                    </td>
+                </tr>
+                <tr ng-repeat="employee in Employees">
+                    <td>
+                        {{employee.Name}}
+                    </td>
+                    <td>
+                        {{employee.Email}}
+                    </td>
+                    <td>
+                        {{employee.DOB}}
+                    </td>
+                    <td>
+                        {{employee.Department}}
+                    </td>
+                    <td>
+                        {{employee.Gender}}
+                    </td>
+                    <td>
+                        {{employee.Age}}
+                    </td>
+                    <td>
+                        <input type="button" value="Delete" ng-click="DeleteEmploye(employee.Email,$index)">
+                    </td>
+                    <td>
+                        <input type="button" value="Edit" ng-click="populateForm(employee)">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
